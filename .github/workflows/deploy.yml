@@ -17,7 +17,8 @@ jobs:
       # MONGODB_CONNECTION_PROTOCOL: mongodb+srv
       # MONGODB_CLUSTER_ADDRESS: grey-db.uvcyb.mongodb.net
       MONGODB_CONNECTION_PROTOCOL: mongodb
-      MONGODB_CLUSTER_ADDRESS: mongodb
+      MONGODB_CLUSTER_ADDRESS: 27017:27017
+
       # MONGODB_USERNAME: ${{ secrets.MONGODB_USERNAME }}
       # MONGODB_PASSWORD: ${{ secrets.MONGODB_PASSWORD }}
       MONGODB_USERNAME: root
@@ -25,7 +26,9 @@ jobs:
       PORT: 8080
     services:
       mongodb:
-        image: mongo:5.0
+        image: mongo
+        ports:
+          - 27017:27017
         env:
           MONGO_INITDB_ROOT_USERNAME: root
           MONGO_INITDB_ROOT_PASSWORD: password
